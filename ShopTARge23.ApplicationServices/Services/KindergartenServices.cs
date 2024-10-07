@@ -77,5 +77,23 @@ namespace ShopTARge23.ApplicationServices.Services
                 UpdatedAt = kindergarten.UpdatedAt
             };
         }
+        public async Task<Kindergarten> Update(KindergartenDto dto)
+        {
+            Kindergarten domain = new();
+
+            domain.Id = dto.Id;
+            domain.GroupName = dto.GroupName;
+            domain.ChildrenCount = dto.ChildrenCount;
+            domain.KindergartenName = dto.KindergartenName;
+            domain.Teacher = dto.Teacher;
+            domain.CreatedAt = dto.CreatedAt;
+            domain.UpdatedAt = DateTime.Now;
+
+            _context.Kindergartens.Update(domain);
+            await _context.SaveChangesAsync();
+
+            return domain;
+        }
+
     }
 }
