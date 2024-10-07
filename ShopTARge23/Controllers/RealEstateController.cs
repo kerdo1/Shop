@@ -3,6 +3,7 @@ using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 using ShopTARge23.ApplicationServices.Services;
 using ShopTARge23.Models.RealEstates;
+using ShopTARge23.Core.Dto;
 namespace ShopTARge23.Controllers
 {
     public class RealEstateController : Controller
@@ -33,6 +34,59 @@ namespace ShopTARge23.Controllers
 
                 });
             return View(result);
+        }
+
+        public IActionResult Create()
+        {
+            RealEstatesCreateUpdateViewModel realEstates = new();
+            {
+                return View("CreateUpdate", realEstates);
+
+
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(RealEstatesCreateUpdateViewModel vm)
+        {
+            var dto = new RealEstateDto()
+            {
+                Id = vm.Id,
+                Size = vm.Size,
+                Location = vm.Location,
+                RoomNumber = vm.RoomNumber,
+                BuildingType = vm.BuildingType,
+                CreatedAt = vm.CreatedAt,
+                ModifiedAt = vm.ModifiedAt,
+            };
+
+            var result = await _realEstateServices.Create(dto);
+            if (result == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var realEstate = await _realEstateServices.GetAsync(id);
+
+            if (realEstate == null)
+            {
+                return NotFound();
+            }
+
+            var vm = new RealEstateDetailsViewModel();
+            
+            vm.Id = realEstate.Id;
+            vm.Size = realEstate.Size;
+            vm.Location = realEstate.Location;
+            vm.RoomNumber = realEstate.RoomNumber;
+            vm.BuildingType = realEstate.BuildingType;
+            vm.CreatedAt = realEstate.CreatedAt;
+
+            return View(vm);
         }
     }
 }
