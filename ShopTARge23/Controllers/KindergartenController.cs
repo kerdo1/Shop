@@ -96,28 +96,6 @@ namespace ShopTARge23.Controllers
         }
 
 
-        /* [HttpGet]
-         public async Task<IActionResult> Update(Guid id)
-         {
-             var kindergarten = await _kindergartenServices.DetailAsync(id);
-             if (kindergarten == null)
-             {
-                 return NotFound();
-             }
-
-             var vm = new KindergartenCreateUpdateViewModel
-             {
-                 Id = kindergarten.Id,
-                 GroupName = kindergarten.GroupName,
-                 ChildrenCount = kindergarten.ChildrenCount,
-                 KindergartenName = kindergarten.KindergartenName,
-                 Teacher = kindergarten.Teacher,
-                 CreatedAt = kindergarten.CreatedAt,
-                 UpdatedAt = kindergarten.UpdatedAt
-             };
-
-             return View("CreateUpdate", vm);
-         }*/
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
         {
@@ -164,6 +142,42 @@ namespace ShopTARge23.Controllers
             }
 
             return RedirectToAction(nameof(Index), vm);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var kindergarten = await _kindergartenServices.DetailAsync(id);
+
+            if (kindergarten == null)
+            {
+                return NotFound();
+            }
+
+            var vm = new KindergartenDeleteViewModel();
+
+            vm.Id = kindergarten.Id;
+            vm.GroupName = kindergarten.GroupName;
+            vm.ChildrenCount = kindergarten.ChildrenCount;
+            vm.KindergartenName = kindergarten.KindergartenName;
+            vm.Teacher = kindergarten.Teacher;
+            vm.CreatedAt = kindergarten.CreatedAt;
+            vm.UpdatedAt = kindergarten.UpdatedAt;
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var kindergarten = await _kindergartenServices.Delete(id);
+
+            if (kindergarten == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
