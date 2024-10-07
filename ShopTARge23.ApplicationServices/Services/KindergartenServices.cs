@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Microsoft.EntityFrameworkCore;
+using ShopTARge23.Core.Dto;
+using ShopTARge23.Core.ServiceInterface;
 
 namespace ShopTARge23.ApplicationServices.Services
 {
@@ -15,16 +17,43 @@ namespace ShopTARge23.ApplicationServices.Services
     {
         private readonly ShopTARge23Context _context;
 
-        public KindergartenServices
-            (
-                ShopTARge23Context context
-            )
+        public KindergartenServices(ShopTARge23Context context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<Kindergarten>> GetAllKinderGartens()
         {
             return await _context.Kindergartens.ToListAsync();
+        }
+
+        public async Task<KindergartenDto> Create(KindergartenDto dto) // Ensure the return type matches
+        {
+            Kindergarten kindergarten = new Kindergarten
+            {
+                Id = Guid.NewGuid(),
+                GroupName = dto.GroupName,
+                ChildrenCount = dto.ChildrenCount,
+                KindergartenName = dto.KindergartenName,
+                Teacher = dto.Teacher,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+
+            await _context.Kindergartens.AddAsync(kindergarten);
+            await _context.SaveChangesAsync();
+
+            // Map the created Kindergarten back to a KindergartenDto if needed
+            return new KindergartenDto
+            {
+                Id = kindergarten.Id,
+                GroupName = kindergarten.GroupName,
+                ChildrenCount = kindergarten.ChildrenCount,
+                KindergartenName = kindergarten.KindergartenName,
+                Teacher = kindergarten.Teacher,
+                CreatedAt = kindergarten.CreatedAt,
+                UpdatedAt = kindergarten.UpdatedAt
+            };
         }
     }
 }

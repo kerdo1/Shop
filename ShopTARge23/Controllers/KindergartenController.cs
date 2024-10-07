@@ -2,7 +2,7 @@
 using ShopTARge23.Data;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Models.Kindergartens;
-
+using ShopTARge23.Core.Dto;
 namespace ShopTARge23.Controllers
 {
     public class KindergartenController : Controller
@@ -33,6 +33,37 @@ namespace ShopTARge23.Controllers
 
                 }).ToList();
             return View(result);
+        }
+
+        public IActionResult Create()
+        {
+            KindergartenCreateUpdateViewModel realEstates = new();
+            {
+                return View("CreateUpdate", realEstates);
+
+
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(KindergartenCreateUpdateViewModel vm)
+        {
+            var dto = new KindergartenDto()
+            {
+                Id = vm.Id,
+                GroupName = vm.GroupName,
+                ChildrenCount = vm.ChildrenCount,
+                KindergartenName = vm.KindergartenName,
+                Teacher = vm.Teacher,
+                CreatedAt = vm.CreatedAt,
+                UpdatedAt = vm.UpdatedAt,
+            };
+
+            var result = await _kindergartenServices.Create(dto);
+            if (result == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }
