@@ -31,7 +31,7 @@ namespace ShopTARge23.Controllers
                     KindergartenName = x.KindergartenName,
                     Teacher = x.Teacher,
 
-                });
+                }).ToList();
             return View(result);
         }
     }
