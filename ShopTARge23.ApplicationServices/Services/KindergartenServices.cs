@@ -27,7 +27,7 @@ namespace ShopTARge23.ApplicationServices.Services
             return await _context.Kindergartens.ToListAsync();
         }
 
-        public async Task<KindergartenDto> Create(KindergartenDto dto) // Ensure the return type matches
+        public async Task<KindergartenDto> Create(KindergartenDto dto) 
         {
             Kindergarten kindergarten = new Kindergarten
             {
@@ -43,7 +43,29 @@ namespace ShopTARge23.ApplicationServices.Services
             await _context.Kindergartens.AddAsync(kindergarten);
             await _context.SaveChangesAsync();
 
-            // Map the created Kindergarten back to a KindergartenDto if needed
+           
+            return new KindergartenDto
+            {
+                Id = kindergarten.Id,
+                GroupName = kindergarten.GroupName,
+                ChildrenCount = kindergarten.ChildrenCount,
+                KindergartenName = kindergarten.KindergartenName,
+                Teacher = kindergarten.Teacher,
+                CreatedAt = kindergarten.CreatedAt,
+                UpdatedAt = kindergarten.UpdatedAt
+            };
+
+        }
+        public async Task<KindergartenDto> DetailAsync(Guid id)
+        {
+            var kindergarten = await _context.Kindergartens
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (kindergarten == null)
+            {
+                return null; 
+            }
+
             return new KindergartenDto
             {
                 Id = kindergarten.Id,

@@ -3,6 +3,8 @@ using ShopTARge23.Data;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Models.Kindergartens;
 using ShopTARge23.Core.Dto;
+using ShopTARge23.ApplicationServices.Services;
+using ShopTARge23.Models.Spaceships;
 namespace ShopTARge23.Controllers
 {
     public class KindergartenController : Controller
@@ -64,6 +66,32 @@ namespace ShopTARge23.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var kindergarten = await _kindergartenServices.DetailAsync(id);
+
+            if (kindergarten == null)
+            {
+                return View("Error");
+            }
+
+
+
+            var vm = new KindergartenDetailsViewModel
+            {
+                Id = kindergarten.Id,
+                GroupName = kindergarten.GroupName,
+                ChildrenCount = kindergarten.ChildrenCount,
+                KindergartenName = kindergarten.KindergartenName,
+                Teacher = kindergarten.Teacher,
+                CreatedAt = kindergarten.CreatedAt,
+                UpdatedAt = kindergarten.UpdatedAt
+            };
+
+            return View(vm);
         }
     }
 }
