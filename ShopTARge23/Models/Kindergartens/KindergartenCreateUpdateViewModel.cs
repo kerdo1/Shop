@@ -1,4 +1,6 @@
 ﻿
+using ShopTARge23.Models.Spaceships;
+
 namespace ShopTARge23.Models.Kindergartens
 {
     public class KindergartenCreateUpdateViewModel
@@ -8,6 +10,11 @@ namespace ShopTARge23.Models.Kindergartens
         public int ChildrenCount { get; set; }
         public string KindergartenName { get; set; }
         public string Teacher { get; set; }
+
+        public List<IFormFile> Files { get; set; }
+        public List<KindergartenImageViewModel> Image { get; set; }
+            = new List<KindergartenImageViewModel>();
+
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

@@ -16,10 +16,13 @@ namespace ShopTARge23.ApplicationServices.Services
     public class KindergartenServices : IKindergartenServices
     {
         private readonly ShopTARge23Context _context;
+        private readonly IFileServices _fileServices;
 
-        public KindergartenServices(ShopTARge23Context context)
+
+        public KindergartenServices(ShopTARge23Context context, IFileServices fileServices)
         {
             _context = context;
+            _fileServices = fileServices;
         }
 
         public async Task<IEnumerable<Kindergarten>> GetAllKinderGartens()
@@ -37,8 +40,14 @@ namespace ShopTARge23.ApplicationServices.Services
                 KindergartenName = dto.KindergartenName,
                 Teacher = dto.Teacher,
                 CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
+                UpdatedAt = DateTime.Now,
+
             };
+
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, kindergarten);
+            }
 
             await _context.Kindergartens.AddAsync(kindergarten);
             await _context.SaveChangesAsync();
@@ -88,6 +97,11 @@ namespace ShopTARge23.ApplicationServices.Services
             domain.Teacher = dto.Teacher;
             domain.CreatedAt = dto.CreatedAt;
             domain.UpdatedAt = DateTime.Now;
+
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, domain);
+            }
 
             _context.Kindergartens.Update(domain);
             await _context.SaveChangesAsync();
