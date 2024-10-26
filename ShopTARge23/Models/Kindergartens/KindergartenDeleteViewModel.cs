@@ -11,7 +11,8 @@ namespace ShopTARge23.Models.Kindergartens
         public string Teacher { get; set; }
 
 
-
+        public List<KindergartenImageViewModel> Image { get; set; }
+            = new List<KindergartenImageViewModel>();
 
 
         public DateTime CreatedAt { get; set; }

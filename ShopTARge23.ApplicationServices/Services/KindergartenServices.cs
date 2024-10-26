@@ -114,6 +114,16 @@ namespace ShopTARge23.ApplicationServices.Services
             var kindergarten = await _context.Kindergartens
                 .FirstOrDefaultAsync(x => x.Id == id);
 
+            var images = await _context.FileToDatabases
+                .Where(x => x.KindergartenId == id)
+                .Select(y => new FileToDatabaseDto
+                {
+                    Id = y.Id,
+                    ImageTitle = y.ImageTitle,
+                    KindergartenId = y.KindergartenId
+                }).ToArrayAsync();
+
+            await _fileServices.RemoveImagesFromDatabase(images);
 
             _context.Kindergartens.Remove(kindergarten);
             await _context.SaveChangesAsync();

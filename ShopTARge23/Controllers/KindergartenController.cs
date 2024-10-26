@@ -198,6 +198,17 @@ namespace ShopTARge23.Controllers
                 return NotFound();
             }
 
+            var photos = await _context.FileToDatabases
+                .Where(x => x.KindergartenId == id)
+                .Select(y => new KindergartenImageViewModel
+                {
+                    KindergartenId = y.Id,
+                    ImageId = y.Id,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+
             var vm = new KindergartenDeleteViewModel();
 
             vm.Id = kindergarten.Id;
@@ -207,6 +218,8 @@ namespace ShopTARge23.Controllers
             vm.Teacher = kindergarten.Teacher;
             vm.CreatedAt = kindergarten.CreatedAt;
             vm.UpdatedAt = kindergarten.UpdatedAt;
+            vm.Image.AddRange(photos);
+
 
             return View(vm);
         }
