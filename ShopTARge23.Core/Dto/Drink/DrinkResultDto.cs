@@ -1,0 +1,63 @@
+﻿using Newtonsoft.Json;
+
+public class DrinkResultDto
+{
+    public string idDrink { get; set; }
+    public string strDrink { get; set; }
+    public object strDrinkAlternate { get; set; }
+    public string strTags { get; set; }
+    public object strVideo { get; set; }
+    public string strCategory { get; set; }
+    public string strIBA { get; set; }
+    public string strAlcoholic { get; set; }
+    public string strGlass { get; set; }
+    public string strInstructions { get; set; }
+    public string strInstructionsES { get; set; }
+    public string strInstructionsDE { get; set; }
+    public string strInstructionsFR { get; set; }
+    public string strInstructionsIT { get; set; }
+
+    [JsonProperty("strInstructionsZH-HANS")]
+    public object strInstructionsZHHANS { get; set; }
+
+    [JsonProperty("strInstructionsZH-HANT")]
+    public object strInstructionsZHHANT { get; set; }
+    public string strDrinkThumb { get; set; }
+    public string strIngredient1 { get; set; }
+    public string strIngredient2 { get; set; }
+    public string strIngredient3 { get; set; }
+    public string strIngredient4 { get; set; }
+    public string strIngredient5 { get; set; }  // changed to string
+    public string strIngredient6 { get; set; }  // changed to string
+    public string strIngredient7 { get; set; }  // changed to string
+    public string strIngredient8 { get; set; }  // changed to string
+    public string strIngredient9 { get; set; }  // changed to string
+    public string strIngredient10 { get; set; } // changed to string
+    public string strIngredient11 { get; set; } // changed to string
+    public string strIngredient12 { get; set; } // changed to string
+    public string strIngredient13 { get; set; } // changed to string
+    public string strIngredient14 { get; set; } // changed to string
+    public string strIngredient15 { get; set; } // changed to string
+    public string strMeasure1 { get; set; }
+    public string strMeasure2 { get; set; }
+    public string strMeasure3 { get; set; }
+    public object strMeasure4 { get; set; }
+    public object strMeasure5 { get; set; }
+    public object strMeasure6 { get; set; }
+    public object strMeasure7 { get; set; }
+    public object strMeasure8 { get; set; }
+    public object strMeasure9 { get; set; }
+    public object strMeasure10 { get; set; }
+    public object strMeasure11 { get; set; }
+    public object strMeasure12 { get; set; }
+    public object strMeasure13 { get; set; }
+    public object strMeasure14 { get; set; }
+    public object strMeasure15 { get; set; }
+    public string strImageSource { get; set; }
+    public string strImageAttribution { get; set; }
+    public string strCreativeCommonsConfirmed { get; set; }
+    public string dateModified { get; set; }
+
+    public List<string> Ingredients { get; set; } = new List<string>();
+
+}

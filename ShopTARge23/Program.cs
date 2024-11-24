@@ -20,6 +20,15 @@ namespace ShopTARge23
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
             builder.Services.AddScoped<IFileServices, FileServices>();
             builder.Services.AddScoped<IRealEstateServices, RealEstateServices>();
+            builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
+            builder.Services.AddScoped<IChuckNorrisServices, ChuckNorrisService>();
+            //builder.Services.AddScoped<IGameService, GameService>();
+            builder.Services.AddHttpClient<GameService>();
+            builder.Services.AddScoped<IGameService, GameService>();
+            builder.Services.AddScoped<IDrinkServices, DrinkService>();
+            builder.Services.AddControllersWithViews();
+
+
 
 
             builder.Services.AddDbContext<ShopTARge23Context>(options =>

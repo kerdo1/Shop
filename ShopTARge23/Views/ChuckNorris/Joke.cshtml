@@ -1,0 +1,33 @@
+﻿@model ShopTARge23.Models.ChuckNorris.ChuckNorrisJokeViewModel
+
+<div class="container">
+    <h2>Chuck Norris Joke</h2>
+    <h4>Created at: @Model.created_at</h4>
+    <dl class="row text-dark">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">ID</label>
+            <dd class="col-sm-10">@Model.id</dd>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Joke URL</label>
+            <dd class="col-sm-10"><a href="@Model.url" target="_blank">View Joke</a></dd>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Joke</label>
+            <dd class="col-sm-10">@Model.value</dd>
+        </div>
+
+    </dl>
+</div>
+<div class="container">
+    <form method="post" asp-action="SearchCity">
+        <button type="submit" class="btn btn-primary">Get Another Joke</button>
+    </form>
+</div>
+<div class="container">
+    <form method="get" asp-action="Index">
+        <button type="submit" class="btn btn-success">Back to Index</button>
+    </form>
+</div>

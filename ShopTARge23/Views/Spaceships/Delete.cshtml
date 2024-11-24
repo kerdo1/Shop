@@ -1,88 +1,84 @@
 ﻿@model ShopTARge23.Models.Spaceships.SpaceshipDeleteViewModel
 
-<h1>Delete</h1>
+<section id="banner">
+    <div class="container spaceships-content">
+        <main role="main" class="pb-3">
+            <div class="row mb-2">
+                <div class="col-auto">
+                    <h1 style="color: white;">Delete Spaceship</h1>
+                </div>
+            </div>
 
-<div>
-    <h4>Spaceships</h4>
-    <hr />
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="Id" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Id)
-        </div>
-    </dl>
+            <div class="row mb-4">
+                <div class="col-auto">
+                    <h4  style="color: white;">Spaceships</h4>
+                    <hr />
+                </div>
+            </div>
 
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Name)
-        </div>
-    </dl>
+            <form method="post" asp-action="DeleteConfirmation">
+                <input type="hidden" asp-for="Id" />
 
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="Typename" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Typename)
-        </div>
-    </dl>
+                <!-- Details Section -->
+                <div class="table-responsive">
+                    <table class="table table-borderless table-sm">
+                        <tbody style="background-color: #36454F; color: #dfe1e6;">
+                            <tr >
+                                <th class="text-light">ID</th>
+                                <td class="text-light">@Model.Id</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Name</th>
+                                <td class="text-light">@Model.Name</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Type</th>
+                                <td class="text-light">@Model.Typename</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Spaceship Model</th>
+                                <td class="text-light">@Model.SpaceshipModel</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Built Date</th>
+                                <td class="text-light">@Model.BuiltDate</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Crew</th>
+                                <td class="text-light">@Model.Crew</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Engine Power</th>
+                                <td class="text-light">@Model.EnginePower</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Created At</th>
+                                <td class="text-light">@Model.CreatedAt</td>
+                            </tr>
+                            <tr >
+                                <th class="text-light">Modified At</th>
+                                <td class="text-light">@Model.ModifiedAt</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="SpaceshipModel" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.SpaceshipModel)
-        </div>
-    </dl>
+                <!-- Image Section -->
+                <div class="row mb-4">
+                    @foreach (var images in Model.ImageViewModels)
+                    {
+                        <partial name="_Images" model="images" />
+                    }
+                </div>
 
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="BuiltDate" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.BuiltDate)
-        </div>
-    </dl>
-
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="Crew" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Crew)
-        </div>
-    </dl>
-
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="EnginePower" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.EnginePower)
-        </div>
-    </dl>
-
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="CreatedAt" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </div>
-    </dl>
-
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="ModifiedAt" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.ModifiedAt)
-        </div>
-    </dl>
-
-    <dl class="row">
-        <div class="form-group row">
-            @foreach (var images in Model.ImageViewModels)
-            {
-                <partial name="_Images" model="images" />
-            }
-        </div>
-    </dl>
-
-    master Test
-
-    <hr />
-    <form asp-action="DeleteConfirmation">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" />
-        <a asp-action="Index" asp-controller="spaceships" class="btn btn-success">Back</a>
-    </form>
-</div>
+                <!-- Buttons -->
+                <div class="form-group row mt-4">
+                    <div class="col">
+                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                        <a asp-action="Index" asp-controller="spaceships" class="btn btn-success btn-lg">Back</a>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</section>

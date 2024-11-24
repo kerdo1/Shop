@@ -1,61 +1,103 @@
 ﻿@model ShopTARge23.Models.Spaceships.SpaceshipDetailsViewModel
 
-<h1>Details</h1>
+<section id="banner">
+    <div class="container spaceships-content">
+        <main role="main" class="pb-3">
+            <!-- Title -->
+            <div class="row mb-2">
+                <div class="col-auto">
+                    <h1 style="color: white;">Spaceship Details</h1>
+                </div>
+            </div>
 
-<div>
-    <h4>Spaceships</h4>
-    <hr />
-    <dl class="row">
-        <div class="form-group row">
-            <label asp-for="Id" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Id)
-        </div>
+            <!-- Details Section -->
+            <div class="details-container" style="background-color: #36454F; padding: 20px; border-radius: 8px; color: #dfe1e6;">
+                <dl class="row">
 
-        <div class="form-group row">
-            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Name)
-        </div>
+                    <!-- ID Field -->
+                    <div class="form-group row">
+                        <label asp-for="Id" class="col-sm-2 col-form-label" style="color: #dfe1e6;">ID</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.Id)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Name Field -->
+                    <div class="form-group row">
+                        <label asp-for="Name" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Name</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.Name)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Type Field -->
+                    <div class="form-group row">
+                        <label asp-for="Typename" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Type</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.Typename)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Spaceship Model Field -->
+                    <div class="form-group row">
+                        <label asp-for="SpaceshipModel" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Model</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.SpaceshipModel)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Built Date Field -->
+                    <div class="form-group row">
+                        <label asp-for="BuiltDate" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Built Date</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.BuiltDate)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Crew Field -->
+                    <div class="form-group row">
+                        <label asp-for="Crew" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Crew</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.Crew)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Engine Power Field -->
+                    <div class="form-group row">
+                        <label asp-for="EnginePower" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Engine Power</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.EnginePower)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Created At Field -->
+                    <div class="form-group row">
+                        <label asp-for="CreatedAt" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Created At</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.CreatedAt)</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Modified At Field -->
+                    <div class="form-group row">
+                        <label asp-for="ModifiedAt" class="col-sm-2 col-form-label" style="color: #dfe1e6;">Modified At</label>
+                        <div class="col-sm-10">
+                            <span>@Html.DisplayFor(model => model.ModifiedAt)</span>
+                        </div>
+                    </div>
 
-        <div class="form-group row">
-            <label asp-for="Typename" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Typename)
-        </div>
+                    <!-- Display Images -->
+                    @foreach (var images in Model.Images)
+                    {
+                        <partial name="_Images" model="images" />
+                    }
+                </dl>
 
-        <div class="form-group row">
-            <label asp-for="SpaceshipModel" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.SpaceshipModel)
-        </div>
-
-        <div class="form-group row">
-            <label asp-for="BuiltDate" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.BuiltDate)
-        </div>
-
-        <div class="form-group row">
-            <label asp-for="Crew" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Crew)
-        </div>
-
-        <div class="form-group row">
-            <label asp-for="EnginePower" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.EnginePower)
-        </div>
-
-        <div class="form-group row">
-            <label asp-for="CreatedAt" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </div>
-
-        <div class="form-group row">
-            <label asp-for="ModifiedAt" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.ModifiedAt)
-        </div>
-
-        @foreach(var images in Model.Images)
-        {
-            <partial name="_Images" model="images" />
-        }
-    </dl>
-
-    <a asp-action="Index" asp-controller="spaceships" class="btn btn-danger">Back</a>
-</div>
+                <!-- Back Button -->
+                <div class="mt-4">
+                    <a asp-action="Index" asp-controller="spaceships" class="btn btn-danger btn-lg">Back</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</section>

@@ -1,0 +1,56 @@
+﻿@model ShopTARge23.Models.Drinks.DrinkIndexViewModel
+
+<div class="container mt-4">
+    <form asp-action="Index" method="post">
+        <div>
+            <h2>Search for a Drink</h2>
+            <label asp-for="DrinkName">Drink Name</label>
+            <input asp-for="DrinkName" />
+        </div>
+
+        <div>
+            <input value="Search" asp-action="Index" asp-controller="Drink" type="submit"/>
+        </div>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.Name))
+    {
+            <div>
+                <hr />
+                <h3>@Model.Name</h3>
+                <img src="@Model.ImageUrl" alt="@Model.Name" />
+                <p><strong>Category:</strong> @Model.Category</p>
+                <p><strong>Alcoholic:</strong> @Model.Alcoholic</p>
+                <p><strong>Glass:</strong> @Model.Glass</p>
+                <p><strong>Instructions:</strong> @Model.Instructions</p>
+                <h4>Ingredients:</h4>
+                <ul>
+                @foreach (var ingredient in Model.Ingredients)
+                {
+                            <li>@ingredient</li>
+                }
+                </ul>
+            </div>
+    }
+    else if (!string.IsNullOrWhiteSpace(@ViewData["Error"]?.ToString()))
+    {
+            <p class="text-danger">@ViewData["Error"]</p>
+    }
+
+@if (Model.Ingredients != null && Model.Ingredients.Any())
+{
+    <h4>Ingredients:</h4>
+    <ul>
+        @foreach (var ingredient in Model.Ingredients)
+        {
+            <li>@ingredient</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No ingredients found.</p>
+}
+
+
+</div>
