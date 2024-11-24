@@ -32,6 +32,7 @@ namespace ShopTARge23.Controllers
                 {
                     CityName = weather.CityName,
                     Temperature = weather.Temperature,
+                    FeelsLike = weather.FeelsLike,
                     Humidity = weather.Humidity,
                     Pressure = weather.Pressure,
                     WindSpeed = weather.WindSpeed,

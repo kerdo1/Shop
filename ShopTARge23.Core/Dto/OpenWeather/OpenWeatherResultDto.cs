@@ -11,9 +11,9 @@ namespace ShopTARge23.Core.Dto.OpenWeather
     {
         // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
 
-
         public string CityName { get; set; }
         public double Temperature { get; set; }
+        public double FeelsLike { get; set; }  
         public int Humidity { get; set; }
         public int Pressure { get; set; }
         public double WindSpeed { get; set; }

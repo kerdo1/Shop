@@ -3,17 +3,73 @@
 
 @{
     ViewData["Title"] = "Weather Data";
+
+    string backgroundImage = "";
+
+    if (!string.IsNullOrEmpty(Model.WeatherDescription))
+    {
+        switch (Model.WeatherDescription.ToLower())
+        {
+            case "clear sky":
+                backgroundImage = "/images/sunny.jpg"; // sunny image
+                break;
+            case "few clouds":
+            case "scattered clouds":
+            case "broken clouds":
+                backgroundImage = "/images/cloudy.jfif"; // cloudy image
+                break;
+            case "shower rain":
+            case "light rain":
+            case "moderate rain":
+            case "heavy rain":
+            case "very heavy rain":
+            case "extreme rain":
+                backgroundImage = "/images/rainy.jpg"; // rainy image
+                break;
+            case "thunderstorm":
+                backgroundImage = "/images/thunderstorm.webp"; // thunderstorm image
+                break;
+            case "snow":
+            case "light snow":
+            case "heavy snow":
+                backgroundImage = "/images/snowy.jfif"; // snowy image
+                break;
+            case "mist":
+            case "haze":
+            case "smoke":
+            case "fog":
+                backgroundImage = "/images/foggy.jpg"; // foggy image
+                break;
+            case "dust":
+            case "sand":
+            case "ash":
+                backgroundImage = "/images/dusty.jpg"; // dusty image
+                break;
+            case "squall":
+                backgroundImage = "/images/squall.jpg"; // squall image
+                break;
+            case "tornado":
+                backgroundImage = "/images/tornado.jpg"; // tornado image
+                break;
+            default:
+                backgroundImage = "/images/default.jpg"; // fallback image
+                break;
+        }
+    }
 }
+
 <div class="container container-custom">
 <div class="container mt-4">
     @if (Model != null)
     {
         <h1>Weather in @Model.CityName</h1>
+        <p><strong>City:</strong> @Model.CityName °C</p>
         <p><strong>Temperature:</strong> @Model.Temperature °C</p>
+        <p><strong>Feels Like:</strong> @Model.FeelsLike °C</p>
         <p><strong>Humidity:</strong> @Model.Humidity %</p>
         <p><strong>Pressure:</strong> @Model.Pressure hPa</p>
-        <p><strong>Wind Speed:</strong> @Model.WindSpeed m/s</p>
-        <p><strong>Conditions:</strong> @Model.WeatherDescription</p>
+        <p><strong>Wind Speed:</strong> @Model.WindSpeed km/s</p>
+        <p><strong>Weather Condition:</strong> @Model.WeatherDescription</p>
 
             <button type="submit" class="btn btn-success btn-lg">Get Weather</button> <!-- Large button -->
         }

@@ -38,6 +38,7 @@ namespace ShopTARge23.ApplicationServices.Services
                 {
                     CityName = weatherData.name,
                     Temperature = weatherData.main.temp,
+                    FeelsLike = weatherData.main.feels_like,
                     Humidity = weatherData.main.humidity,
                     Pressure = weatherData.main.pressure,
                     WindSpeed = weatherData.wind.speed,
