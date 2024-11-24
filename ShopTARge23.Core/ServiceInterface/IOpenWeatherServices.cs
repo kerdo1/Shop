@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopTARge23.Core.Dto.OpenWeather;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace ShopTARge23.Core.ServiceInterface
 {
     public interface IOpenWeatherServices
     {
+        Task<OpenWeatherResultDto> GetWeatherByCity(string city);
+
     }
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using NotAShop.ApplicationServices.Services;
 using ShopTARge23.ApplicationServices.Services;
+using ShopTARge23.Core.Dto.OpenWeather;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 
@@ -27,6 +28,7 @@ namespace ShopTARge23
             builder.Services.AddScoped<IGameService, GameService>();
             builder.Services.AddScoped<IDrinkServices, DrinkService>();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IOpenWeatherServices, OpenWeatherService>();
 
 
 

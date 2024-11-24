@@ -1,0 +1,26 @@
+﻿@model ShopTARge23.Models.OpenWeather.OpenWeatherWievModel
+
+
+@{
+    ViewData["Title"] = "Weather Data";
+}
+<div class="container container-custom">
+<div class="container mt-4">
+    @if (Model != null)
+    {
+        <h1>Weather in @Model.CityName</h1>
+        <p><strong>Temperature:</strong> @Model.Temperature °C</p>
+        <p><strong>Humidity:</strong> @Model.Humidity %</p>
+        <p><strong>Pressure:</strong> @Model.Pressure hPa</p>
+        <p><strong>Wind Speed:</strong> @Model.WindSpeed m/s</p>
+        <p><strong>Conditions:</strong> @Model.WeatherDescription</p>
+
+            <button type="submit" class="btn btn-success btn-lg">Get Weather</button> <!-- Large button -->
+        }
+    else
+    {
+        <p>Weather data could not be retrieved. Please try again.</p>
+        <a href="@Url.Action("Index", "OpenWeather")" class="btn btn-primary">Back to Search</a>
+    }
+</div>
+</div>
