@@ -1,6 +1,6 @@
-﻿@model ShopTARge23.Models.RealEstates.RealEstateDetailsViewModel
+﻿@model ShopTARge23.Models.RealEstates.RealEstateDeleteViewModel
 
-<h1>Details</h1>
+<h1>Delete</h1>
 
 <div>
     <h4>Spaceships</h4>
@@ -41,11 +41,15 @@
             @Html.DisplayFor(model => model.ModifiedAt)
         </div>
 
-        @foreach (var images in Model.Image)
+        @foreach (var file in Model.Image)
         {
-            <partial name="_Images" model="images" />
+            <partial name="_Images" model="file" />
         }
 
+        <form asp-action="DeleteConfirmation">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Index" asp-controller="realEstates" class="btn btn-success">Back</a>
+        </form>
     </dl>
-    <a asp-action="Index" asp-controller="realEstates" class="btn btn-danger">Back</a>
 </div>

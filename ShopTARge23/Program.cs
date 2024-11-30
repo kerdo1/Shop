@@ -19,8 +19,8 @@ namespace ShopTARge23
 
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
             builder.Services.AddScoped<IFileServices, FileServices>();
-            builder.Services.AddScoped<IRealEstateServices, RealEstateServices>();
-
+            builder.Services.AddScoped<IRealEstateServices, RealEstatesServices>();
+            builder.Services.AddScoped<IEmailServices, EmailServices>();
 
             builder.Services.AddDbContext<ShopTARge23Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
