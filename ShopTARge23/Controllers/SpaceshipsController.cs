@@ -70,7 +70,7 @@ namespace ShopTARge23.Controllers
                     }).ToArray()
             };
 
-            var result = await _spaceshipServices.Create(dto);
+            var result = await _spaceshipServices.Create(dto); 
 
             if (result == null)
             {

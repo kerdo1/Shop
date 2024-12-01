@@ -1,4 +1,6 @@
-﻿namespace ShopTARge23.Models.Spaceships
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ShopTARge23.Models.Spaceships
 {
     public class SpaceshipCreateUpdateViewModel
     {
