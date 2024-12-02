@@ -3,7 +3,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Real Estate</h4>
+    <h4>Spaceships</h4>
     <hr />
     <dl class="row">
         <div class="form-group row">
@@ -12,13 +12,13 @@
         </div>
 
         <div class="form-group row">
-            <label asp-for="Size" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Size)
+            <label asp-for="Location" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Location)
         </div>
 
         <div class="form-group row">
-            <label asp-for="Location" class="col-sm-2 col-form-label"></label>
-            @Html.DisplayFor(model => model.Location)
+            <label asp-for="Size" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Size)
         </div>
 
         <div class="form-group row">
@@ -41,7 +41,11 @@
             @Html.DisplayFor(model => model.ModifiedAt)
         </div>
 
-    </dl>
+        @foreach (var images in Model.Image)
+        {
+            <partial name="_Images" model="images" />
+        }
 
-    <a asp-action="Index" asp-controller="RealEstate" class="btn btn-danger">Back</a>
+    </dl>
+    <a asp-action="Index" asp-controller="realEstate" class="btn btn-danger">Back</a>
 </div>
