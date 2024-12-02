@@ -7,7 +7,7 @@ using ShopTARge23.Data;
 
 
 
-namespace NotAShop.ApplicationServices.Services
+namespace ShopTARge23.ApplicationServices.Services
 {
     public class FileService : IFileServices
     {

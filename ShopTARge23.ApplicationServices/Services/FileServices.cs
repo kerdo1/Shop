@@ -9,7 +9,7 @@ using ShopTARge23.Core.Dto;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 
-namespace ShopTARgv23.ApplicationServices.Services
+namespace ShopTARge23.ApplicationServices.Services
 {
     public class FileServices : IFileServices
     {

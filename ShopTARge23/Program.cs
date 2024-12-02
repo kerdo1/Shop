@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using NotAShop.ApplicationServices.Services;
+using ShopTARge23.ApplicationServices.Services;
 using ShopTARge23.ApplicationServices.Services;
 using ShopTARge23.Core.Dto.OpenWeather;
 using ShopTARge23.Core.ServiceInterface;
@@ -20,7 +20,7 @@ namespace ShopTARge23
 
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
             builder.Services.AddScoped<IFileServices, FileService>();
-            builder.Services.AddScoped<IRealEstateServices, RealEstateServices>();
+            builder.Services.AddScoped<IRealEstateServices, RealEstatesServices>();
             builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
             builder.Services.AddScoped<IChuckNorrisServices, ChuckNorrisService>();
             //builder.Services.AddScoped<IGameService, GameService>();
