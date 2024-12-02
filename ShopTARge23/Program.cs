@@ -6,7 +6,6 @@ using ShopTARge23.Core.Dto.OpenWeather;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 
-
 namespace ShopTARge23
 {
     public class Program
@@ -19,7 +18,7 @@ namespace ShopTARge23
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
-            builder.Services.AddScoped<IFileServices, FileService>();
+            builder.Services.AddScoped<IFileServices, FileServices>();
             builder.Services.AddScoped<IRealEstateServices, RealEstatesServices>();
             builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
             builder.Services.AddScoped<IChuckNorrisServices, ChuckNorrisService>();
