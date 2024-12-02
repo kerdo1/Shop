@@ -11,8 +11,12 @@ namespace ShopTARge23.Core.ServiceInterface
     public interface IRealEstateServices
     {
         
-        Task<IEnumerable<RealEstate>> GetAllRealEstates();
+        //Task<IEnumerable<RealEstate>> GetAllRealEstates();
+        
+
         Task<RealEstate> Create(RealEstateDto dto);
+        Task<RealEstate> Update(RealEstateDto dto);
         Task<RealEstate> GetAsync(Guid id);
+        Task<RealEstate> Delete(Guid id);
     }
 }
